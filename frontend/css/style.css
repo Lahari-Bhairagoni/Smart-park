@@ -1,0 +1,508 @@
+/* ===============================
+   SMARTPARK – GLOBAL DESIGN SYSTEM
+   =============================== */
+
+/* -------- CSS RESET -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: #f6f9fc;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+/* -------- VARIABLES -------- */
+:root {
+  --primary: #2bb3a3;
+  --primary-dark: #1f9a8c;
+  --secondary: #0ea5e9;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --bg-card: #ffffff;
+  --bg-soft: #f0fdfa;
+
+  --border: #e5e7eb;
+  --muted: #6b7280;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* -------- GLOBAL LAYOUT -------- */
+.container {
+  width: 92%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.page {
+  padding: 30px 0 60px;
+}
+
+/* -------- NAVBAR -------- */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  background: var(--bg-soft);
+  color: var(--primary-dark);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  color: #16a34a;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* -------- CARDS -------- */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.card.soft {
+  background: var(--bg-soft);
+  border-color: #ccfbf1;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* -------- BUTTONS -------- */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #374151;
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+}
+
+/* -------- GRID -------- */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* -------- STATUS TAGS -------- */
+.tag {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.tag.success {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.tag.warning {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.tag.danger {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* -------- FOOTER -------- */
+.footer {
+  border-top: 1px solid var(--border);
+  background: #ffffff;
+  padding: 20px 0;
+  margin-top: 60px;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* -------- UTILITIES -------- */
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mt-40 { margin-top: 40px; }
+
+.text-right { text-align: right; }
+.text-muted { color: var(--muted); }
+
+/* ===== PAYMENT PAGE ===== */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-header i {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.details-box {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.amount-box {
+  background: #ecfdf5;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.amount-box .total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 12px;
+  color: var(--primary);
+}
+
+.secure-text {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #16a34a;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.payment-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.payment-tabs .tab {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.payment-tabs .tab.active {
+  border-color: var(--primary);
+  background: #ecfdf5;
+  color: var(--primary);
+}
+
+.payment-form label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.payment-form input,
+.payment-form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.hidden {
+  display: none;
+}
+
+.pay-btn {
+  width: 100%;
+  margin-top: 24px;
+  font-size: 16px;
+}
+/* ===============================
+   PARKING SLOT STYLES
+   =============================== */
+
+.slot {
+  height: 90px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+/* AVAILABLE */
+.slot-available {
+  background: #ecfdf5;          /* light green */
+  border: 1.5px solid #86efac;
+  color: #166534;
+  cursor: pointer;
+}
+
+.slot-available:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34,197,94,0.2);
+}
+
+/* OCCUPIED */
+.slot-occupied {
+  background: #fef2f2;          /* light red */
+  border: 1.5px solid #fca5a5;
+  color: #7f1d1d;
+  cursor: not-allowed;
+}
+
+/* RESERVED */
+.slot-reserved {
+  background: #fff7ed;          /* light orange */
+  border: 1.5px solid #fdba74;
+  color: #9a3412;
+  cursor: not-allowed;
+}
+
+/* EV CHARGING */
+.slot-ev {
+  box-shadow: inset 0 0 0 2px #38bdf8;
+  position: relative;
+}
+
+.slot-ev::after {
+  content: "⚡";
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  font-size: 14px;
+  color: #0284c7;
+}
+
+/* Slot text */
+.slot-id {
+  text-align: center;
+}
+
+/* ===== BOOKING MODAL ===== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: #fff;
+  width: 420px;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--shadow-md);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close {
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-info {
+  background: #f9fafb;
+  padding: 14px;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+
+.modal-info div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.modal-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-top: 6px;
+}
+
+.duration-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.duration-buttons button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+
+.duration-buttons .active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.price-box {
+  background: #ecfdf5;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 18px 0;
+  font-size: 14px;
+}
+
+.price-box div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.price-box .total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hidden {
+  display: none;
+}

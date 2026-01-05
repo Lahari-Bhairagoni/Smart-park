@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment | SmartPark</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- JS -->
+  <script defer src="../js/payment.js"></script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <span>SmartPark</span>
+      <small class="text-muted">Intelligent Mobility</small>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="page-header">
+      <i class="ri-arrow-left-line"></i>
+      <div>
+        <h2>Payment</h2>
+        <p class="text-muted">Complete your booking</p>
+      </div>
+    </div>
+
+    <div class="grid grid-2 mt-30">
+
+      <!-- BOOKING DETAILS -->
+      <div class="card">
+        <h4 class="card-title">
+          <i class="ri-car-line"></i> Booking Details
+        </h4>
+
+        <div class="details-box">
+          <div class="detail-row">
+            <span><i class="ri-map-pin-line"></i> Location</span>
+            <strong>Zone A – Main Entrance</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>Slot Number</span>
+            <strong id="slotText">-</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>Vehicle</span>
+            <strong id="vehicleText">-</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>Type</span>
+            <strong>Standard</strong>
+          </div>
+
+          <div class="detail-row">
+            <span><i class="ri-time-line"></i> Duration</span>
+            <strong id="durationText">-</strong>
+          </div>
+        </div>
+
+        <div class="amount-box">
+          <div class="detail-row">
+            <span>Rate</span>
+            <strong>₹50 / hour</strong>
+
+          </div>
+          <div class="detail-row">
+            <span>Duration</span>
+            <strong id="durationText2">-</strong>
+          </div>
+
+          <div class="total">
+            <span>Total Amount</span>
+            <strong id="amountText">$0.00</strong>
+          </div>
+        </div>
+
+        <p class="secure-text">
+          <i class="ri-shield-check-line"></i>
+          Your payment is secured with 256-bit encryption
+        </p>
+      </div>
+
+      <!-- PAYMENT METHOD -->
+      <div class="card">
+        <h4 class="card-title">
+          <i class="ri-bank-card-line"></i> Payment Method
+        </h4>
+
+        <div class="payment-tabs">
+          <button class="tab active" data-method="card">
+            <i class="ri-bank-card-line"></i>
+            Card
+          </button>
+          <button class="tab" data-method="upi">
+            <i class="ri-smartphone-line"></i>
+            UPI
+          </button>
+          <button class="tab" data-method="wallet">
+            <i class="ri-wallet-3-line"></i>
+            Wallet
+          </button>
+        </div>
+
+        <!-- CARD -->
+        <div class="payment-form" id="card">
+          <label>Card Number</label>
+          <input type="text" placeholder="1234 5678 9012 3456">
+
+          <div class="grid grid-2 mt-10">
+            <div>
+              <label>Expiry Date</label>
+              <input type="text" placeholder="MM/YY">
+            </div>
+            <div>
+              <label>CVV</label>
+              <input type="password" placeholder="123">
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI -->
+        <div class="payment-form hidden" id="upi">
+          <label>UPI ID</label>
+          <input type="text" placeholder="name@upi">
+        </div>
+
+        <!-- WALLET -->
+        <div class="payment-form hidden" id="wallet">
+          <label>Select Wallet</label>
+          <select>
+            <option>PayTM</option>
+            <option>PhonePe</option>
+            <option>GPay</option>
+            <option>Amazon Pay</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary pay-btn" onclick="confirmPayment()">
+          Pay <span id="payAmount">$0.00</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div>SmartPark Virtual Parking System • Smart City Infrastructure</div>
+    <div>© 2024 SmartPark</div>
+  </div>
+</footer>
+
+</body>
+</html>

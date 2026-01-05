@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPark | Quick Booking</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- JS -->
+  <script defer src="../js/booking.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <span>SmartPark</span>
+      <small class="text-muted">Intelligent Mobility</small>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="parking.html">Parking Availability</a>
+      <a href="book.html" class="active">Book Now</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="badge">Secure Booking</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PAGE ================= -->
+<main class="page">
+  <div class="container">
+
+    <h2>Quick Parking Booking</h2>
+    <p class="text-muted">Confirm your slot and complete booking</p>
+
+    <div class="grid grid-2 mt-30">
+
+      <!-- LEFT -->
+      <div class="card">
+        <h4>Booking Details</h4>
+
+        <div class="mt-20">
+          <label class="text-muted">Selected Slot</label>
+          <input id="slotInput" type="text" disabled
+            style="width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid var(--border)">
+        </div>
+
+        <div class="mt-20">
+          <label class="text-muted">Vehicle Number</label>
+          <input id="vehicleInput" type="text" placeholder="AP09 AB 1234"
+            style="width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid var(--border)">
+        </div>
+
+        <div class="mt-20">
+          <label class="text-muted">Parking Duration (hours)</label>
+          <select id="durationSelect"
+            style="width:100%;margin-top:6px;padding:12px;border-radius:10px;border:1px solid var(--border)">
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="card">
+        <h4>Cost Summary</h4>
+
+        <div class="mt-20">
+          <div style="display:flex;justify-content:space-between">
+            <span>Rate per Hour</span>
+            <strong>₹50</strong>
+          </div>
+
+          <div style="display:flex;justify-content:space-between" class="mt-10">
+            <span>Duration</span>
+            <strong id="durationText">1 Hour</strong>
+          </div>
+
+          <hr style="margin:20px 0;border:1px solid var(--border)">
+
+          <div style="display:flex;justify-content:space-between;font-size:18px">
+            <span>Total Amount</span>
+            <strong id="totalAmount">₹50</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary mt-30" style="width:100%" onclick="proceedPayment()">
+          Proceed to Payment
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div>SmartPark Virtual Parking System • Sustainable Urban Mobility</div>
+    <div>© 2024 SmartPark. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

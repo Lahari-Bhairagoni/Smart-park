@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | SmartPark</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script defer src="../js/admin.js"></script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <span>SmartPark</span>
+      <small class="text-muted">Admin Panel</small>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+
+    <h2>Admin Dashboard</h2>
+    <p class="text-muted">System overview & controls</p>
+
+    <div class="grid grid-4 mt-30">
+      <div class="card">
+        <h3 id="aTotal">0</h3>
+        <p class="text-muted">Total Slots</p>
+      </div>
+      <div class="card">
+        <h3 id="aAvailable" style="color:var(--success)">0</h3>
+        <p class="text-muted">Available</p>
+      </div>
+      <div class="card">
+        <h3 id="aOccupied" style="color:var(--danger)">0</h3>
+        <p class="text-muted">Occupied</p>
+      </div>
+      <div class="card">
+        <h3 id="aRevenue">₹0</h3>
+        <p class="text-muted">Revenue</p>
+      </div>
+    </div>
+
+    <div class="card mt-40">
+      <h4>System Controls</h4>
+      <div class="mt-20" style="display:flex;gap:12px">
+        <button class="btn btn-outline">Enable Zone A</button>
+        <button class="btn btn-outline">Enable Zone B</button>
+        <button class="btn btn-outline">Enable Zone C</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div>SmartPark Admin Console</div>
+    <div>© 2024 SmartPark</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPark | Parking Availability</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- JS -->
+  <script defer src="../js/parking.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <span>SmartPark</span>
+      <small class="text-muted">Intelligent Mobility</small>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="parking.html" class="active">Parking Availability</a>
+      <a href="book.html">Book Now</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="badge">5G Connected</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PAGE ================= -->
+<main class="page">
+  <div class="container">
+
+    <!-- Title -->
+    <h2>Parking Availability</h2>
+    <p class="text-muted">Select an available slot to book</p>
+
+    <!-- Legend -->
+    <div class="mt-20" style="display:flex;gap:14px;font-size:14px">
+      <span class="tag success">Available</span>
+      <span class="tag danger">Occupied</span>
+      <span class="tag warning">Reserved</span>
+      <span class="tag" style="background:#ecfeff;color:#0284c7">EV Charging</span>
+    </div>
+
+    <!-- Zone Selector -->
+    <div class="mt-30" style="display:flex;gap:12px">
+      <button class="btn btn-primary" onclick="loadZone('A')">Zone A</button>
+      <button class="btn btn-outline" onclick="loadZone('B')">Zone B</button>
+      <button class="btn btn-outline" onclick="loadZone('C')">Zone C</button>
+    </div>
+
+    <!-- Parking Grid -->
+    <div
+      id="parkingGrid"
+      class="grid mt-30"
+      style="grid-template-columns:repeat(10,1fr);gap:16px">
+    </div>
+
+    <!-- Summary -->
+    <div class="grid grid-4 mt-40">
+      <div class="card text-center">
+        <h3 id="totalSlots">0</h3>
+        <p class="text-muted">Total Slots</p>
+      </div>
+
+      <div class="card text-center">
+        <h3 id="availableSlots" style="color:var(--success)">0</h3>
+        <p class="text-muted">Available</p>
+      </div>
+
+      <div class="card text-center">
+        <h3 id="evCount" style="color:#0284c7">0</h3>
+        <p class="text-muted">EV Stations</p>
+      </div>
+
+      <div class="card text-center">
+        <h3 id="availabilityPercent">0%</h3>
+        <p class="text-muted">Availability</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div>SmartPark Virtual Parking System • Sustainable Urban Mobility</div>
+    <div>© 2024 SmartPark. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ================= BOOKING MODAL ================= -->
+<div id="bookingModal" class="modal-overlay hidden">
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3>Book Parking Slot</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+
+    <p class="text-muted">Reserve slot for your vehicle</p>
+
+    <div class="modal-info">
+      <div>
+        <span>Slot</span>
+        <strong id="modalSlot">-</strong>
+      </div>
+      <div>
+        <span>Row</span>
+        <strong id="modalRow">-</strong>
+      </div>
+      <div>
+        <span>Type</span>
+        <strong>Standard</strong>
+      </div>
+    </div>
+
+    <label class="modal-label">Vehicle Registration</label>
+    <input
+      id="vehicleInput"
+      class="modal-input"
+      placeholder="e.g., AP09 AB 1234"
+    />
+
+    <label class="modal-label mt-20">Duration (hours)</label>
+    <div class="duration-buttons">
+      <button onclick="setDuration(1)">1h</button>
+      <button class="active" onclick="setDuration(2)">2h</button>
+      <button onclick="setDuration(4)">4h</button>
+      <button onclick="setDuration(8)">8h</button>
+    </div>
+
+    <div class="price-box">
+      <div>
+        Rate <span>₹50 / hour</span>
+      </div>
+      <div>
+        Duration <span id="durationText">2 hours</span>
+      </div>
+      <div class="total">
+        Total <span id="totalAmount">₹100</span>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

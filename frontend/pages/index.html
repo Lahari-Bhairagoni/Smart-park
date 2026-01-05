@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPark | Home</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Page JS -->
+  <script defer src="../js/dashboard.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <span>SmartPark</span>
+      <small class="text-muted">Intelligent Mobility</small>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="parking.html">Parking Availability</a>
+      <a href="book.html">Book Now</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="badge">5G Connected</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PAGE ================= -->
+<main class="page">
+  <div class="container">
+
+    <!-- ================= HERO ================= -->
+    <section class="card soft">
+      <div class="tag success">Live • Connected</div>
+
+      <h1 class="mt-20">
+        Smart Parking for a <span style="color:var(--primary)">Sustainable City</span>
+      </h1>
+
+      <p class="card-muted mt-10" style="max-width:700px">
+        Find, book, and navigate to available parking spots in real time.
+        AI-powered routing saves time and reduces emissions.
+      </p>
+
+      <div class="mt-20">
+        <button class="btn btn-primary">Find Parking</button>
+        <button class="btn btn-outline" style="margin-left:10px">Quick Book</button>
+      </div>
+    </section>
+
+    <!-- ================= REAL TIME OVERVIEW ================= -->
+    <section class="mt-40">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Real-Time Overview</h3>
+        <a href="#" class="text-muted">View All →</a>
+      </div>
+
+      <div class="grid grid-6 mt-20" style="grid-template-columns:repeat(6,1fr)">
+        <div class="card">
+          <div class="card-muted">Total Capacity</div>
+          <h2>100</h2>
+          <small class="text-muted">parking slots</small>
+        </div>
+
+        <div class="card">
+          <div class="card-muted">Available Now</div>
+          <h2 style="color:var(--success)">30</h2>
+          <small class="tag success">↑ 5% vs last hour</small>
+        </div>
+
+        <div class="card">
+          <div class="card-muted">Currently Occupied</div>
+          <h2>33</h2>
+          <small class="text-muted">vehicles parked</small>
+        </div>
+
+        <div class="card">
+          <div class="card-muted">EV Charging</div>
+          <h2>10</h2>
+          <small class="text-muted">active stations</small>
+        </div>
+
+        <div class="card">
+          <div class="card-muted">CO₂ Saved</div>
+          <h2>124kg</h2>
+          <small class="text-muted">this week</small>
+        </div>
+
+        <div class="card">
+          <div class="card-muted">Peak Prediction</div>
+          <h2>08:00 – 09:00</h2>
+          <small class="tag warning">High demand</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURE CARDS ================= -->
+    <section class="grid grid-3 mt-30">
+      <div class="card">
+        <h4>Real-Time Availability</h4>
+        <p class="card-muted">
+          View live parking slot status across all zones with instant updates via 5G connectivity.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>AI Route Optimization</h4>
+        <p class="card-muted">
+          Smart navigation considers traffic, distance, and parking availability for optimal routes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>EV-Friendly Parking</h4>
+        <p class="card-muted">
+          Dedicated EV charging stations powered by renewable energy.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= TRAFFIC & ANALYTICS ================= -->
+    <section class="grid grid-2 mt-40">
+      <div class="card">
+        <h4>Traffic Analytics</h4>
+
+        <div class="grid grid-3 mt-20">
+          <div>
+            <h2>20%</h2>
+            <small class="text-muted">Density</small>
+          </div>
+          <div>
+            <h2>52</h2>
+            <small class="text-muted">Avg Speed (km/h)</small>
+          </div>
+          <div>
+            <span class="tag success">Good</span>
+          </div>
+        </div>
+
+        <div class="mt-20">
+          <canvas id="trafficChart" height="160"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>AI Route Optimizer</h4>
+
+        <div class="card soft mt-20">
+          <strong>Via Main Street</strong>
+          <div class="text-muted mt-5">1.2 km • 4 min • 12 spots</div>
+          <button class="btn btn-primary mt-10">Navigate</button>
+        </div>
+
+        <div class="card mt-10">
+          <strong>Via Highway 101</strong>
+          <div class="text-muted mt-5">2.1 km • 6 min • 8 spots</div>
+        </div>
+
+        <div class="card mt-10">
+          <strong>Via Downtown</strong>
+          <div class="text-muted mt-5">0.8 km • 8 min • 3 spots</div>
+        </div>
+
+        <div class="card soft mt-20">
+          <strong>AI Recommendation</strong>
+          <p class="card-muted mt-5">
+            Main Street offers the optimal balance of distance and availability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIGITAL TWIN ================= -->
+    <section class="card mt-40">
+      <div style="display:flex;justify-content:space-between">
+        <h4>Digital Twin Simulation</h4>
+        <span class="tag success">Live Simulation</span>
+      </div>
+
+      <div class="grid grid-3 mt-20">
+        <div>
+          <small class="text-muted">System Load</small>
+          <h3>23%</h3>
+        </div>
+        <div>
+          <small class="text-muted">5G Latency</small>
+          <h3>18ms</h3>
+        </div>
+        <div>
+          <small class="text-muted">Data Sync</small>
+          <h3>95%</h3>
+        </div>
+      </div>
+
+      <div class="mt-30">
+        <strong>Autonomous Vehicle Mode</strong>
+        <div class="grid grid-2 mt-10">
+          <div>AVs in Queue: <strong>3</strong></div>
+          <div>Avg Park Time: <strong>2.3s</strong></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div>SmartPark Virtual Parking System • Sustainable Urban Mobility</div>
+    <div>© 2024 SmartPark. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
