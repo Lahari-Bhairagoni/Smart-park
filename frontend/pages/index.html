@@ -264,6 +264,18 @@ function openLogin() {
 
 function closeLogin() {
   document.getElementById("loginModal").classList.add("hidden");
+
+  // 🔥 RESET INPUTS
+  document.getElementById("emailInput").value = "";
+  document.getElementById("passwordInput").value = "";
+  document.getElementById("confirmPasswordInput").value = "";
+
+  // 🔥 RESET TO LOGIN MODE ALWAYS
+  isLogin = true;
+  document.getElementById("formTitle").innerText = "Login";
+  document.getElementById("submitBtn").innerText = "Login";
+  document.getElementById("toggleText").innerText = "Don't have an account?";
+  document.getElementById("confirmPasswordInput").classList.add("hidden");
 }
 
 // Login
@@ -372,7 +384,7 @@ async function handleAuth() {
     return;
   }
 
-  // 🔥 ADD THIS BLOCK HERE
+  // Confirm password check (only for register)
   if (!isLogin) {
     const confirmPassword = document.getElementById("confirmPasswordInput").value;
 
@@ -397,6 +409,7 @@ async function handleAuth() {
 
     const data = await res.json();
 
+    // ✅ LOGIN FLOW
     if (isLogin) {
       if (data.message === "Login successful") {
         localStorage.setItem("userEmail", data.user.email);
@@ -406,15 +419,24 @@ async function handleAuth() {
       } else {
         alert(data.message);
       }
-    } else {
-  alert(data.message);
+    }
 
-  if (data.message === "User registered successfully") {
-    isLogin = true;
-    toggleForm();   // switch to login
-    alert("Now login with your credentials");
-  }
-}
+    // ✅ REGISTER FLOW (FIXED CLEAN)
+    else {
+      if (data.message === "User registered successfully") {
+        alert("Registration successful. Please login.");
+
+        // 🔥 SWITCH TO LOGIN MODE
+           // ONLY this (no isLogin = true)
+
+        // 🔥 CLEAR INPUTS
+        document.getElementById("emailInput").value = "";
+        document.getElementById("passwordInput").value = "";
+        document.getElementById("confirmPasswordInput").value = "";
+      } else {
+        alert(data.message);
+      }
+    }
 
   } catch (err) {
     console.error(err);
