@@ -71,7 +71,10 @@ smart-park/
 │
 └── README.md
 ```
+## Live Project
 
+- Frontend: https://smart-park-management.netlify.app/pages/index.html  
+- Backend: https://smart-park-backend-4vbr.onrender.com  
 ---
 
 ## Installation and Setup
