@@ -99,17 +99,19 @@ window.confirmPayment = async function () {
 
     const booking = JSON.parse(localStorage.getItem("bookingData"));
 
-    await fetch("https://smart-park-backend-4bvr.onrender.com/api/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: booking.user,
-        slotId: booking.slot,
-        time: new Date().toLocaleString()
-      })
-    });
+    const BASE_URL = "https://smart-park-backend-4vbr.onrender.com";
+
+await fetch(`${BASE_URL}/api/bookings`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    user: localStorage.getItem("userEmail"), // 🔥 FIXED
+    slotId: booking.slot,
+    time: new Date().toLocaleString()
+  })
+});
 
     localStorage.setItem("lastBooking", JSON.stringify(booking));
 

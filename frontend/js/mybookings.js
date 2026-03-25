@@ -9,7 +9,9 @@ if (!user) {
 // FETCH BOOKINGS
 async function loadBookings() {
   try {
-    const res = await fetch("https://smart-park-backend-4bvr.onrender.com/api/bookings");
+    const BASE_URL = "https://smart-park-backend-4vbr.onrender.com";
+
+    const res = await fetch(`${BASE_URL}/api/bookings`);
     const data = await res.json();
 
     const userBookings = data.filter(b => b.user === user);
@@ -35,4 +37,4 @@ async function loadBookings() {
   }
 }
 
-loadBookings(); 
+loadBookings();
