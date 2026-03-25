@@ -9,7 +9,7 @@ if (!user) {
 // FETCH BOOKINGS
 async function loadBookings() {
   try {
-    const res = await fetch("http://localhost:5000/api/bookings");
+    const res = await fetch("https://smart-park-backend-4bvr.onrender.com/api/bookings");
     const data = await res.json();
 
     const userBookings = data.filter(b => b.user === user);

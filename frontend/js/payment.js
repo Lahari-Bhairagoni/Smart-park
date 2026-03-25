@@ -99,7 +99,7 @@ window.confirmPayment = async function () {
 
     const booking = JSON.parse(localStorage.getItem("bookingData"));
 
-    await fetch("http://localhost:5000/api/bookings", {
+    await fetch("https://smart-park-backend-4bvr.onrender.com/api/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
