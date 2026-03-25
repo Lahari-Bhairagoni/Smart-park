@@ -2,6 +2,12 @@
    ELEMENTS
 ================================ */
 
+const user = localStorage.getItem("userEmail");
+
+if (!user) {
+  alert("Please login first");
+  window.location.href = "index.html";
+}
 const grid = document.getElementById("parkingGrid");
 
 const totalEl = document.getElementById("totalSlots");
@@ -156,6 +162,15 @@ function updatePrice() {
 ================================ */
 
 function confirmBooking() {
+  const user = localStorage.getItem("userEmail");
+
+  // 🔒 CHECK LOGIN FIRST
+  if (!user) {
+    alert("Please login first to book a slot");
+    window.location.href = "index.html";
+    return;
+  }
+
   const vehicle = document.getElementById("vehicleInput").value.trim();
 
   if (!vehicle) {
@@ -169,16 +184,66 @@ function confirmBooking() {
       slot: selectedSlot.id,
       vehicle,
       duration,
-      amount: duration * RATE
+      amount: duration * RATE,
+      user: user
     })
   );
 
   closeModal();
   window.location.href = "payment.html";
 }
-
 /* ===============================
    INIT
 ================================ */
 
 loadZone("A");
+function selectZone(btn, zone) {
+  // remove active from all
+  document.querySelectorAll(".zone-btn").forEach(b => {
+    b.classList.remove("btn-primary");
+    b.classList.remove("active");
+    b.classList.add("btn-outline");
+  });
+
+  // activate clicked
+  btn.classList.remove("btn-outline");
+  btn.classList.add("btn-primary");
+  btn.classList.add("active");
+
+  loadZone(zone);
+}
+function recommendSlot() {
+
+  const currentZone = document.querySelector(".zone-btn.active").innerText.split(" ")[1];
+
+  const slots = zones[currentZone];
+
+  // filter only available slots
+  const availableSlots = slots.filter(s => s.status === "available");
+
+  if (availableSlots.length === 0) {
+    document.getElementById("aiResult").innerText = "❌ No available slots";
+    return;
+  }
+
+  // AI LOGIC (simple smart selection)
+  const bestSlot = availableSlots[Math.floor(Math.random() * availableSlots.length)];
+
+  // remove previous highlight
+  document.querySelectorAll(".slot").forEach(s => s.style.border = "");
+
+  // highlight selected slot
+  const slotElements = document.querySelectorAll(".slot");
+  slotElements.forEach(el => {
+    if (el.innerText.includes(bestSlot.id)) {
+      el.style.border = "3px solid #00ffcc";
+    }
+  });
+
+  // Route suggestion (simple logic)
+  const route = Math.random() > 0.5 ? "Main Gate" : "Side Entrance";
+
+  document.getElementById("aiResult").innerText =
+  `Slot: ${bestSlot.id} | Route: ${route} | Time: 3 min | Traffic: Low`;
+
+}

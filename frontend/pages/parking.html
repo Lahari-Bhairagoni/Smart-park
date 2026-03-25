@@ -54,10 +54,13 @@
 
     <!-- Zone Selector -->
     <div class="mt-30" style="display:flex;gap:12px">
-      <button class="btn btn-primary" onclick="loadZone('A')">Zone A</button>
-      <button class="btn btn-outline" onclick="loadZone('B')">Zone B</button>
-      <button class="btn btn-outline" onclick="loadZone('C')">Zone C</button>
-    </div>
+      <button class="btn btn-primary mt-20" onclick="recommendSlot()">Recommend Best Slot</button>
+
+<p id="aiResult" class="mt-10 text-muted"></p>
+  <button class="btn btn-primary zone-btn active" onclick="selectZone(this,'A')">Zone A</button>
+  <button class="btn btn-outline zone-btn" onclick="selectZone(this,'B')">Zone B</button>
+  <button class="btn btn-outline zone-btn" onclick="selectZone(this,'C')">Zone C</button>
+</div>
 
     <!-- Parking Grid -->
     <div

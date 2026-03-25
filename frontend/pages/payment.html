@@ -5,16 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Payment | SmartPark</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="../css/style.css">
-
-  <!-- JS -->
   <script defer src="../js/payment.js"></script>
 </head>
 <body>
@@ -31,14 +24,16 @@
 <main class="page">
   <div class="container">
 
-    <!-- Header -->
+    <!-- FIXED BACK BUTTON -->
     <div class="page-header">
-      <i class="ri-arrow-left-line"></i>
+      <i class="ri-arrow-left-line" style="cursor:pointer" onclick="goBack()"></i>
       <div>
         <h2>Payment</h2>
         <p class="text-muted">Complete your booking</p>
       </div>
     </div>
+
+    <!-- REST SAME -->
 
     <div class="grid grid-2 mt-30">
 
@@ -153,7 +148,7 @@
           </select>
         </div>
 
-        <button class="btn btn-primary pay-btn" onclick="confirmPayment()">
+        <button type="button" class="btn btn-primary pay-btn" onclick="confirmPayment()">
           Pay <span id="payAmount">$0.00</span>
         </button>
       </div>
@@ -168,6 +163,12 @@
     <div>© 2024 SmartPark</div>
   </div>
 </footer>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 </body>
 </html>
+

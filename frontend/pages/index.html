@@ -28,11 +28,17 @@
       <a href="index.html" class="active">Home</a>
       <a href="parking.html">Parking Availability</a>
       <a href="book.html">Book Now</a>
+      <a href="mybookings.html">My Bookings</a>
     </nav>
 
     <div class="nav-right">
-      <div class="badge">5G Connected</div>
-    </div>
+  <div class="badge">5G Connected</div>
+
+  <span id="userText" class="text-muted" style="margin-right:10px"></span>
+
+<button id="loginBtn" class="btn btn-outline" onclick="openLogin()">Login</button>
+<button id="logoutBtn" class="btn btn-primary hidden" onclick="logout()">Logout</button>
+</div>
   </div>
 </header>
 
@@ -54,9 +60,9 @@
       </p>
 
       <div class="mt-20">
-        <button class="btn btn-primary">Find Parking</button>
-        <button class="btn btn-outline" style="margin-left:10px">Quick Book</button>
-      </div>
+  <button class="btn btn-primary" onclick="goToParking()">Find Parking</button>
+  <button class="btn btn-outline" style="margin-left:10px" onclick="goToBooking()">Quick Book</button>
+</div>
     </section>
 
     <!-- ================= REAL TIME OVERVIEW ================= -->
@@ -222,6 +228,189 @@
     <div>© 2024 SmartPark. All rights reserved.</div>
   </div>
 </footer>
+<script>
+function goToParking() {
+  window.location.href = "parking.html";
+}
 
+function goToBooking() {
+  window.location.href = "book.html";
+}
+</script>
+<div id="loginModal" class="modal-overlay hidden">
+  <div class="modal-card">
+    <h3 id="formTitle">Login</h3>
+
+    <input id="emailInput" class="modal-input mt-20" placeholder="Enter Email" />
+    <input id="passwordInput" type="password" class="modal-input mt-10" placeholder="Enter Password" />
+    <input id="confirmPasswordInput" type="password" class="modal-input mt-10 hidden" placeholder="Confirm Password" />
+    <p style="margin-top:10px">
+  <span id="toggleText">Don't have an account?</span>
+  <a href="#" onclick="toggleForm()" style="color:var(--primary)">Register</a>
+</p>
+
+    <div class="modal-actions mt-20">
+      <button class="btn btn-outline" onclick="closeLogin()">Cancel</button>
+      <button id="submitBtn" class="btn btn-primary" onclick="handleAuth()">Login</button>
+    </div>
+  </div>
+</div>
+<script>
+
+// Open/Close
+function openLogin() {
+  document.getElementById("loginModal").classList.remove("hidden");
+}
+
+function closeLogin() {
+  document.getElementById("loginModal").classList.add("hidden");
+}
+
+// Login
+async function login() {
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
+
+  if (!email || !password) {
+    alert("Enter all fields");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.message === "Login successful") {
+      localStorage.setItem("userEmail", data.user.email);
+
+      updateUI();
+      closeLogin();
+
+      alert("Login successful");
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
+  }
+}
+
+// Logout
+function logout() {
+  localStorage.removeItem("userEmail");
+  updateUI();
+}
+
+// UI Update
+function updateUI() {
+  const user = localStorage.getItem("userEmail");
+
+  const userText = document.getElementById("userText");
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (user) {
+    userText.innerText = "👤 " + user;
+
+    loginBtn.classList.add("hidden");
+    logoutBtn.classList.remove("hidden");
+  } else {
+    userText.innerText = "";
+
+    loginBtn.classList.remove("hidden");
+    logoutBtn.classList.add("hidden");
+  }
+}
+// Init
+updateUI();
+
+</script>
+<script>
+
+let isLogin = true;
+
+// Toggle Login/Register
+function toggleForm() {
+  isLogin = !isLogin;
+
+  document.getElementById("formTitle").innerText = isLogin ? "Login" : "Register";
+  document.getElementById("submitBtn").innerText = isLogin ? "Login" : "Register";
+  document.getElementById("toggleText").innerText = isLogin
+    ? "Don't have an account?"
+    : "Already have an account?";
+
+  // 🔥 SHOW/HIDE CONFIRM PASSWORD
+  const confirmField = document.getElementById("confirmPasswordInput");
+  if (isLogin) {
+    confirmField.classList.add("hidden");
+  } else {
+    confirmField.classList.remove("hidden");
+  }
+}
+
+// Handle both login/register
+async function handleAuth() {
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
+
+  if (!email || !password) {
+    alert("Enter all fields");
+    return;
+  }
+
+  // 🔥 ADD THIS BLOCK HERE
+  if (!isLogin) {
+    const confirmPassword = document.getElementById("confirmPasswordInput").value;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+  }
+
+  const url = isLogin
+    ? "http://localhost:5000/api/auth/login"
+    : "http://localhost:5000/api/auth/register";
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (isLogin) {
+      if (data.message === "Login successful") {
+        localStorage.setItem("userEmail", data.user.email);
+        updateUI();
+        closeLogin();
+        alert("Login successful");
+      } else {
+        alert(data.message);
+      }
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
+  }
+}
+
+</script>
 </body>
 </html>

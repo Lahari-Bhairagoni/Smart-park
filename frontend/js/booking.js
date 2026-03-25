@@ -1,3 +1,9 @@
+const user = localStorage.getItem("userEmail");
+
+if (!user) {
+  alert("Please login first");
+  window.location.href = "index.html";
+}
 const slotInput = document.getElementById("slotInput");
 const durationSelect = document.getElementById("durationSelect");
 const durationText = document.getElementById("durationText");
@@ -43,3 +49,4 @@ function proceedPayment() {
 
 // Init
 updateCost();
+

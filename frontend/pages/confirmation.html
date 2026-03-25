@@ -54,6 +54,14 @@
     <div>© 2024 SmartPark</div>
   </div>
 </footer>
+<script>
+const user = localStorage.getItem("userEmail");
+
+if (!user) {
+  alert("Please login first");
+  window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
